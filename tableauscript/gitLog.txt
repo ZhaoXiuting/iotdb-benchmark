@@ -1,0 +1,5 @@
+4102b9bebfc73b252767d2e6f760baa13a65b350 - The latest data is used as the baseline (#414)
+3a55c68ec053b12fd423cb2ecc727adc73ef6541 - Copy iotdbconf/fit/iotdb-engine.properties from benchmark to server
+7bf2b21f849c9b357485bc46c0d92361832037a8 - change version num to commit id (#404)
+298a06f525ab244e7e264c0c42f273492a007e89 - change db name to weekly_test
+4247d6b868849a12a7e98e07ee6cfedb43bc67a4 - chang pom file to 0.9.0 (#419)
