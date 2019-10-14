@@ -20,6 +20,7 @@ secommit=secommit_id
 j=2
 commitid=$(awk "NR==$j""{print $1}" commitId.txt)
 echo $commitid
+cd 
 sed -i 's/'$secommit'/'$commitid'/g' cli-benchmark.sh
 #jia zhixingchaxunde jiaobencichu
 echo "commitId is $commitid"
