@@ -107,7 +107,7 @@ else
             scp $BENCHMARK_HOME/$IOTDB_CONF/iotdb-env.sh $SERVER_HOST:$LOG_STOP_FLAG_PATH/baseline_iotdb/incubator-iotdb/iotdb/conf
             ssh $SERVER_HOST "sh $LOG_STOP_FLAG_PATH/baseline_iotdb/incubator-iotdb/iotdb/bin/start-server.sh > /dev/null 2>&1 &"
         else
-            ssh $SERVER_HOST "cd $LOG_STOP_FLAG_PATH;rm -rf ./incubator-iotdb;rm -rf ./log_stop_flag;git clone https://github.com/apache/incubator-iotdb.git;cd ./incubator-iotdb;mvn clean package -Dmaven.test.skip=true"
+            ssh $SERVER_HOST "cd $LOG_STOP_FLAG_PATH;rm -rf ./incubator-iotdb;rm -rf ./log_stop_flag;git clone https://github.com/apache/incubator-iotdb.git;cd ./incubator-iotdb;git reset --hard secommit_id;mvn clean package -Dmaven.test.skip=true"
             ssh $SERVER_HOST "sh $LOG_STOP_FLAG_PATH/incubator-iotdb/server/target/iotdb-server-0.9.0-SNAPSHOT/sbin/stop-server.sh;sleep 5"
             #start server system information recording
             ssh $SERVER_HOST "sh $LOG_STOP_FLAG_PATH/iotdb-benchmark/ser-benchmark.sh > /dev/null 2>&1 &"
