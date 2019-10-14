@@ -4,7 +4,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Generate analysis result of query test.')
 parser.add_argument('--mysql_host', '-a', default='192.168.130.19', help='mysql server address')
-parser.add_argument('--mysql_database', '-d', default='commit_test', help='mysql database')
+parser.add_argument('--mysql_database', '-d', default='weekly_test', help='mysql database')
 args = parser.parse_args()
 host = args.mysql_host
 database = args.mysql_database
@@ -29,7 +29,9 @@ def read_commitId():
     commitId_df = pd.read_sql_query(sql, engine)
     commitId_df_list = commitId_df["commitId"].tolist()
     commitId_list = get_commitId()
-    difference_list = list(set(commitId_list)-set(commitId_df_list))
+    same_list = [x for x in commitId_df_list if x in commitId_list]
+    difference_list = [y for y in (commitId_df_list + commitId_list) if y not in same_list]
+    # difference_list = list(set(commitId_list)-set(commitId_df_list))
     return difference_list
 
 
@@ -41,7 +43,7 @@ def get_commitId():
         for i in range(len(lines)):
             line_list.append(lines[i].strip().split(" "))
         for j in range(len(line_list)):
-            #print(line_list[j])
+            # print(line_list[j])
             pr = line_list[j][-1]
             if(pr.find("(#")==0):
                 commit_id.append(line_list[j][0])
