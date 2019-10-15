@@ -4,7 +4,7 @@ User=root
 PW=Ise_Nel_2017
 sql=" SELECT commitId from gitLog WHERE STATUS = 'F' ORDER BY commitId desc"
 #echo $sql
-result=` mysql -h 192.168.130.19 -P3306 -uroot -pIse_Nel_2017 weekly_test -e "${sql}" `
+result=` mysql -h 192.168.130.19 -P3306 -uroot -pIse_Nel_2017 commit_test -e "${sql}" `
 #result=`mysql -h $Host -u $User -pweekly_test <<EOF
 #SELECT commitId from gitLog WHERE STATUS = 'F'
 #EOF`
