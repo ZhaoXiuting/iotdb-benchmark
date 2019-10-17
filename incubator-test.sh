@@ -1,5 +1,4 @@
 #!/bin/bash
-cd ../incubator-iotdb
 Host=192.168.130.19
 User=root
 PW=Ise_Nel_2017
@@ -24,5 +23,6 @@ echo -e "\033[32m------------------------\033[1m"
 #echo $number
 commitid=$(awk "NR==$number""{print $1}" commitId.txt)
 echo $commitid
+cd ../incubator-iotdb
 git reset --hard $commitid
 rm -rf commitId.txt
