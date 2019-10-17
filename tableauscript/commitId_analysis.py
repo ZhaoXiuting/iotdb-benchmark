@@ -28,7 +28,7 @@ def read_commitId():
     sql = 'select commitId from ' + table_name
     commitId_df = pd.read_sql_query(sql, engine)
     commitId_df_list = commitId_df["commitId"].tolist()
-    commitId_list = get_commitId()
+    commitId_list = get_commitId()[::-1]
     difference_list = [y for y in commitId_list if y not in commitId_df_list]
     return difference_list
 

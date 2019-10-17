@@ -17,9 +17,10 @@ echo $i >> commitId.txt
 done
 #cat commitId.txt
 secommit=secommit_id
-number=$(awk 'END{print NR}' commitId.txt)
+number=2
+#number=$(awk 'END{print NR}' commitId.txt)
 echo -e "\033[32m------------------------\033[1m"
-echo $number
+#echo $number
 commitid=$(awk "NR==$number""{print $1}" commitId.txt)
 echo $commitid
 sed -i 's/'$secommit'/'$commitid'/g' cli-benchmark.sh
