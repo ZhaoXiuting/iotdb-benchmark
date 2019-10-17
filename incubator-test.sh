@@ -1,5 +1,4 @@
 #!/bin/bash
-cd ..
 cd ..incubator-iotdb
 Host=192.168.130.19
 User=root
