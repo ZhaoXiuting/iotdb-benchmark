@@ -18,12 +18,14 @@ done
 #cat commitId.txt
 secommit=secommit_id
 number=$(awk 'END{print NR}' commitId.txt)
+echo -e "\033[32m------------------------\033[1m"
 echo $number
 commitid=$(awk "NR==$number""{print $1}" commitId.txt)
 echo $commitid
 sed -i 's/'$secommit'/'$commitid'/g' cli-benchmark.sh
 #jia zhixingchaxunde jiaobencichu
 echo "commitId is $commitid"
+echo -e "\033[32m------------------------\033[0m"
 source ./ciscripts/fit/ingestion-overflow50-auto-test.sh
 sed -i 's/'$commitid'/'$secommit'/g' cli-benchmark.sh
 rm -rf commitId.txt
