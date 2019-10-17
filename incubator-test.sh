@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ..incubator-iotdb
+cd ../incubator-iotdb
 Host=192.168.130.19
 User=root
 PW=Ise_Nel_2017
