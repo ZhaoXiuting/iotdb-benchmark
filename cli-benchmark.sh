@@ -108,9 +108,9 @@ else
             ssh $SERVER_HOST "sh $LOG_STOP_FLAG_PATH/baseline_iotdb/incubator-iotdb/iotdb/bin/start-server.sh > /dev/null 2>&1 &"
         else
             ssh $SERVER_HOST "cd $LOG_STOP_FLAG_PATH;rm -rf ./incubator-iotdb;rm -rf ./log_stop_flag;git clone https://github.com/apache/incubator-iotdb.git;cd ./incubator-iotdb;git reset --hard secommit_id;mvn clean package -Dmaven.test.skip=true"
-            ssh $SERVER_HOST "sh $LOG_STOP_FLAG_PATH/incubator-iotdb/server/target/iotdb-server-0.9.0-SNAPSHOT/sbin/stop-server.sh;sleep 5"
+            ssh $SERVER_HOST "bash $LOG_STOP_FLAG_PATH/incubator-iotdb/server/target/iotdb-server-0.9.0-SNAPSHOT/sbin/stop-server.sh;sleep 5"
             #start server system information recording
-            ssh $SERVER_HOST "sh $LOG_STOP_FLAG_PATH/iotdb-benchmark/ser-benchmark.sh > /dev/null 2>&1 &"
+            ssh $SERVER_HOST "bash $LOG_STOP_FLAG_PATH/iotdb-benchmark/ser-benchmark.sh > /dev/null 2>&1 &"
             COMMIT_ID="commit_id:"$(ssh $SERVER_HOST "cd $LOG_STOP_FLAG_PATH/incubator-iotdb;git rev-parse HEAD")
             sed -i "s/^VERSION.*$/VERSION=${COMMIT_ID}/g" $BENCHMARK_HOME/conf/config.properties
             scp $BENCHMARK_HOME/$IOTDB_CONF/iotdb-engine.properties $SERVER_HOST:$LOG_STOP_FLAG_PATH/incubator-iotdb/server/target/iotdb-server-0.9.0-SNAPSHOT/conf
