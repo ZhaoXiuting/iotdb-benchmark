@@ -11,11 +11,13 @@ result=` mysql -h 192.168.130.19 -P3306 -uroot -pIse_Nel_2017 commit_test -e "${
 #echo ${result}>test.txt
 #m=$(awk 'END{print NR}' test.txt)
 #echo
-for i in $result
-do
-echo $i >> commitId.txt
-done
-#cat commitId.txt
+if [ -z "${result}"]; then
+    echo "没有搜索到状态为F的版本号"
+else
+    for i in $result
+    do
+    echo $i >> commitId.txt
+    done
 secommit=secommit_id
 number=2
 #number=$(awk 'END{print NR}' commitId.txt)
@@ -30,6 +32,4 @@ echo -e "\033[32m------------------------\033[0m"
 source ./ciscripts/fit/ingestion-overflow50-auto-test.sh
 sed -i 's/'$commitid'/'$secommit'/g' cli-benchmark.sh
 rm -rf commitId.txt
-#ma1=$(echo $result | sed 's/.*commitId/commitId/')
-#echo $a1
-
+fi
