@@ -13,7 +13,7 @@ port=3306
 user='root'
 passwd='Ise_Nel_2017'
 table_name = "gitLog"
-config_table_name = "configInsertInfo"
+config_table_name = "versionResult"
 
 
 def read_commitId():
