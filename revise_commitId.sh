@@ -11,7 +11,7 @@ result=` mysql -h 192.168.130.19 -P3306 -uroot -pIse_Nel_2017 commit_test -e "${
 #echo ${result}>test.txt
 #m=$(awk 'END{print NR}' test.txt)
 #echo
-if [ -z "${result}"]; then
+if [ -z "${result}" ]; then
     echo "没有搜索到状态为F的版本号"
 else
     for i in $result
